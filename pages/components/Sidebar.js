@@ -51,8 +51,10 @@ const SidebarButton = styled(Button)`
 `;
 
 const SearchInput = styled.input`
-    outline-width: 0;
     border: none;
+    outline-style: solid;
+    outline-width: 0;
+    
     flex: 1;
 `;
 
