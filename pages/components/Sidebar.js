@@ -6,6 +6,16 @@ import SearchIcon from '@material-ui/icons/Search';
 
 
 function Sidebar() {
+
+    const createChat = () => {
+        const input = prompt("Por favor introduce tu correo electrónico del usuario con quien quieres platicar");
+        if (!input) return null;
+
+        if (EmailValidator.validate(input)){
+            //this is were we need to add the chat into the DB 'chats' collection
+        }
+    };
+
     return (
         <Container>
             <Header>
@@ -25,7 +35,8 @@ function Sidebar() {
                 <SearchInput placeholder="Buscar en chats..."/>
             </Search>
             
-            <SidebarButton>Iniciar nuevo Chat</SidebarButton>
+            <SidebarButton onClick={createChat} >Iniciar nuevo Chat</SidebarButton>
+            {/*List of chats*/}
         </Container>
     )
 }
@@ -54,7 +65,6 @@ const SearchInput = styled.input`
     border: none;
     outline-style: solid;
     outline-width: 0;
-    
     flex: 1;
 `;
 
