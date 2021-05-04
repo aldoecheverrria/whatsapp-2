@@ -1,15 +1,30 @@
 import styled from "styled-components";
+import React from "react";
 import { Avatar, IconButton, Button } from '@material-ui/core';
 import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
+import * as EmailValidator from "email-validator";
+
 
 
 function Sidebar() {
+
+    const createChat = () => {
+        const input = prompt("Por favor introduce tu correo electrónico del usuario con quien quieres platicar");
+        if (!input) return null;
+
+        if (EmailValidator.validate(input)){
+            //this is were we need to add the chat into the DB 'chats' collection
+        }
+    };
+
     return (
         <Container>
             <Header>
-               <UserAvatar/>
+               <UserAvatar
+               
+               />
             <IconsContainer>
                 <IconButton>
                 <ChatIcon/>
@@ -25,7 +40,8 @@ function Sidebar() {
                 <SearchInput placeholder="Buscar en chats..."/>
             </Search>
             
-            <SidebarButton>Iniciar nuevo Chat</SidebarButton>
+            <SidebarButton onClick={createChat} >Iniciar nuevo Chat</SidebarButton>
+            {/*List of chats*/}
         </Container>
     )
 }
@@ -51,8 +67,9 @@ const SidebarButton = styled(Button)`
 `;
 
 const SearchInput = styled.input`
-    outline-width: 0;
     border: none;
+    outline-style: solid;
+    outline-width: 0;
     flex: 1;
 `;
 
